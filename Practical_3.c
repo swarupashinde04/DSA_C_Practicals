@@ -4,6 +4,7 @@
 void insertionSort(int arr[], int n);
 void selectionSort(int arr[], int n);
 void bubbleSort(int arr[], int n);
+void mergeSort(int arr[], int n);
 void display(int arr[], int n);
 
 int main()
@@ -22,6 +23,7 @@ int main()
     printf("\n1. Insertion Sort");
     printf("\n2. Selection Sort");
     printf("\n3. Bubble Sort");
+    printf("\n4. Merge Sort");
     printf("\nEnter your choice: ");
     scanf("%d", &choice);
 
@@ -43,6 +45,12 @@ int main()
             bubbleSort(arr, n);
             printf("\nArray after Bubble Sort:\n");
             display(arr, n);
+            break;
+
+        case 4:
+            mergeSort(arr, n);
+            printf("\nArray after Merge Sort:\n");
+            display(arr,n);
             break;
 
         default:
@@ -112,6 +120,46 @@ void bubbleSort(int arr[], int n)
             }
         }
     }
+}
+
+// Merge Sort Function
+void MergeSort(int arr[], int n)
+{
+    int i, j, k, mid;
+    int temp[10];
+    if(n>1)
+    {
+        mid = n/2;
+        mergeSort(arr, mid);
+        mergeSort(arr+mid, n-mid);
+        i=0;
+        j=mid;
+        k=0;
+        while(i<mid&&j<n)
+        {
+            if(arr[i]<arr[j])
+            {
+                temp[k] = arr[i];
+                i++;
+            }
+            else
+            {
+                temp[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<mid)
+        {
+              temp[k] = arr[i];
+              i++;
+              k++;
+        }
+        for(i=0;i<n;i++)
+        {
+            arr[i] = temp[i];
+        }
+    }        
 }
 
 // Display Function
