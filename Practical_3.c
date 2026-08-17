@@ -123,7 +123,7 @@ void bubbleSort(int arr[], int n)
 }
 
 // Merge Sort Function
-void MergeSort(int arr[], int n)
+void mergeSort(int arr[], int n)
 {
     int i, j, k, mid;
     int temp[10];
