@@ -7,7 +7,7 @@ struct Node {
     struct Node *next;
 };
 
-struct Node *head = NULL;
+struct Node *head = NULL
 
 // 1. Insert at front
 void insertFront(int value) {
