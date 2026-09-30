@@ -1,18 +1,16 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-// Structure of a binary tree node
 struct Node
 {
     int data;
-    Node* left;
-    Node* right;
+    struct Node *left;
+    struct Node *right;
 };
 
-// Create a new node
-Node* createNode(int value)
+struct Node* createNode(int value)
 {
-    Node* newNode = new Node();
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
     newNode->data = value;
     newNode->left = NULL;
@@ -21,43 +19,42 @@ Node* createNode(int value)
     return newNode;
 }
 
-// Preorder: Root -> Left -> Right
-void preorder(Node* root)
+/* Preorder: Root -> Left -> Right */
+void preorder(struct Node* root)
 {
     if (root == NULL)
         return;
 
-    cout << root->data << " ";
+    printf("%d ", root->data);
     preorder(root->left);
     preorder(root->right);
 }
 
-// Inorder: Left -> Root -> Right
-void inorder(Node* root)
+/* Inorder: Left -> Root -> Right */
+void inorder(struct Node* root)
 {
     if (root == NULL)
         return;
 
     inorder(root->left);
-    cout << root->data << " ";
+    printf("%d ", root->data);
     inorder(root->right);
 }
 
-// Postorder: Left -> Right -> Root
-void postorder(Node* root)
+/* Postorder: Left -> Right -> Root */
+void postorder(struct Node* root)
 {
     if (root == NULL)
         return;
 
     postorder(root->left);
     postorder(root->right);
-    cout << root->data << " ";
+    printf("%d ", root->data);
 }
 
 int main()
 {
-    // Creating the binary tree
-    Node* root = createNode(1);
+    struct Node* root = createNode(1);
 
     root->left = createNode(2);
     root->right = createNode(3);
@@ -68,13 +65,13 @@ int main()
     root->right->left = createNode(6);
     root->right->right = createNode(7);
 
-    cout << "Preorder Traversal: ";
+    printf("Preorder Traversal: ");
     preorder(root);
 
-    cout << "\nInorder Traversal: ";
+    printf("\nInorder Traversal: ");
     inorder(root);
 
-    cout << "\nPostorder Traversal: ";
+    printf("\nPostorder Traversal: ");
     postorder(root);
 
     return 0;
